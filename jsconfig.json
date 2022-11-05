@@ -12,8 +12,9 @@
 	},
 	"include": [
 		"scripts/**/*.js",
+		"test/**/*.js"
 	],
 	"files": [
-		"mod.js",
+		"mod.js"
 	]
 }

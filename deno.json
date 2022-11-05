@@ -1,5 +1,9 @@
 {
+	"importMap": "importmap.json",
 	"fmt": {
+		"files": {
+			"exclude": [".denoTypes"]
+		},
 		"options": {
 			"lineWidth": 240,
 			"indentWidth": 4,

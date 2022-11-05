@@ -1,15 +1,17 @@
 #!/usr/bin/env -S deno run --allow-env --allow-read --allow-write --allow-net --allow-run
 
-import {setCwd} from "https://deno.land/x/chdir_anywhere@v0.0.2/mod.js";
-import {generateTypes} from "https://deno.land/x/deno_tsc_helper@v0.1.2/mod.js";
+import { setCwd } from "https://deno.land/x/chdir_anywhere@v0.0.2/mod.js";
+import { generateTypes } from "https://deno.land/x/deno_tsc_helper@v0.1.2/mod.js";
 
 setCwd();
 Deno.chdir("..");
 
 await generateTypes({
+	importMap: "importmap.json",
 	include: [
+		"mod.js",
 		"scripts",
-		"mod.js"
+		"test",
 	],
 });
 
