@@ -8,6 +8,16 @@
  * @property {string} [defaultProtocol]
  */
 
+/** @type {Object<number, string | undefined>} */
+const commonPortProtocols = {
+	20: "tcp",
+	21: "ftp",
+	22: "ssh",
+	80: "http",
+	443: "https",
+	8080: "http",
+}
+
 /**
  * Logs a list of addresses to the console.
  * Useful when calling `new Server` (from std/http) or `Deno.listen()`
@@ -27,7 +37,7 @@ export function announceAddrs(addrs, {
 			if (hostname == "0.0.0.0") {
 				hostname = "localhost";
 			}
-			let protocol = addr.protocol || defaultProtocol || "";
+			let protocol = addr.protocol || defaultProtocol || commonPortProtocols[addr.port] ||  "";
 			if (protocol) {
 				if (protocol.endsWith(":")) {
 					protocol += "//";
