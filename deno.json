@@ -1,7 +1,8 @@
 {
 	"fmt": {
 		"options": {
-			"indentWidth": 240,
+			"lineWidth": 240,
+			"indentWidth": 4,
 			"useTabs": true
 		}
 	}

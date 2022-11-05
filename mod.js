@@ -18,32 +18,16 @@ export function announceAddrs(addrs, {
 	titleText = "Listening on:",
 } = {}) {
 	const listenUrls = [];
-	for (
-		const {
-			protocol,
-			addr,
-		}
-			of addrs
-	) {
-		if (
-			"hostname" in
-				addr
-		) {
+	for (const { protocol, addr } of addrs) {
+		if ("hostname" in addr) {
 			let hostname = addr.hostname;
-			if (
-				hostname ==
-					"0.0.0.0"
-			) {
+			if (hostname == "0.0.0.0") {
 				hostname = "localhost";
 			}
 			listenUrls.push(`- ${protocol}://${hostname}:${addr.port}`);
 		}
 	}
-	console.log(
-		titleText +
-			"\n" +
-			listenUrls.join("\n"),
-	);
+	console.log(titleText + "\n" + listenUrls.join("\n"));
 }
 
 /**
@@ -53,9 +37,7 @@ export class AddrAnnouncer {
 	/**
 	 * @param {AnnounceOptions} announceOptions
 	 */
-	constructor(
-		announceOptions = {},
-	) {
+	constructor(announceOptions = {}) {
 		this.announceOptions = announceOptions;
 		/** @type {AddrWithProtocol[]} */
 		this.addrs = [];
@@ -66,18 +48,9 @@ export class AddrAnnouncer {
 	 * @param {Deno.Addr[]} addrs
 	 * @param {string} [protocol]
 	 */
-	addAddrs(
-		addrs,
-		protocol,
-	) {
-		for (
-			const addr
-				of addrs
-		) {
-			this.addrs.push({
-				addr,
-				protocol,
-			});
+	addAddrs(addrs, protocol) {
+		for (const addr of addrs) {
+			this.addrs.push({ addr, protocol });
 		}
 	}
 
@@ -85,9 +58,6 @@ export class AddrAnnouncer {
 	 * Prints all the collected addresses
 	 */
 	announce() {
-		announceAddrs(
-			this.addrs,
-			this.announceOptions,
-		);
+		announceAddrs(this.addrs, this.announceOptions);
 	}
 }
