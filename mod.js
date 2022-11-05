@@ -22,7 +22,13 @@ const commonPortProtocols = {
  * Logs a list of addresses to the console.
  * Useful when calling `new Server` (from std/http) or `Deno.listen()`
  *
- * #
+ * ### Example usage
+ * ```js
+ * import {Server} from "https://deno.land/std/http/mod.ts";
+ * const server = new Server();
+ * server.listenAndServe();
+ * announceAddrs(server.addrs);
+ * ```
  * @param {(AddrWithProtocol)[]} addrs
  * @param {AnnounceOptions} options
  */
