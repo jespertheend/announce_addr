@@ -16,7 +16,7 @@ const commonPortProtocols = {
 	80: "http",
 	443: "https",
 	8080: "http",
-}
+};
 
 /**
  * Logs a list of addresses to the console.
@@ -43,7 +43,7 @@ export function announceAddrs(addrs, {
 			if (hostname == "0.0.0.0") {
 				hostname = "localhost";
 			}
-			let protocol = addr.protocol || defaultProtocol || commonPortProtocols[addr.port] ||  "";
+			let protocol = addr.protocol || defaultProtocol || commonPortProtocols[addr.port] || "";
 			if (protocol) {
 				if (protocol.endsWith(":")) {
 					protocol += "//";
